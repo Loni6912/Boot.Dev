@@ -21,8 +21,6 @@ print(f"{name} is a level {level} {character_class}.") #格式（綴）字串
 print(f"They have {armor} armor and {magic_resistance} magic resistance.")
 print(f"Their account is currently active: {account_active}")
 
-# Don't edit below this line
-
 print("=========================")
 print("Character Report Complete")
 print("Data types:")
