@@ -88,3 +88,114 @@ my_age = "30"
 intro = create_introduction(my_name, my_age, "1.8", "80")
 print(intro)
 # Your name is John and you are 30 years old. You are 1.8 meters tall and weigh 80 kilograms.
+
+
+#20250128
+#定義頭銜功能
+def get_title(first_name, last_name, job):
+    title = first_name + " " + last_name + " the " + job
+    return title #給出結果值
+
+#定義頭銜功能測試
+def test(first_name, last_name, job):
+    title = get_title(first_name, last_name, job)#呼叫頭銜功能
+    print("First name:", first_name)
+    print("Last name:", last_name)
+    print("Job:", job)
+    print("Title:", title)#呼叫之後獲得的結果值
+    print("=====================================")
+
+
+test("Frodo", "Baggins", "warrior")
+test("Bilbo", "Baggins", "thief")
+test("Gandalf", "The Grey", "wizard")
+test("Aragorn", "Son of Arathorn", "ranger")
+
+
+#在開始點(entry point)進行功能呼叫之前先寫好功能定義
+#一般entrypoint使用main作為簡單明瞭的開始點
+#Python的def定義功能不需要按照順序
+
+def main():           # defined first
+    health = 10
+    armor = 5
+    add_armor(health, armor)  # calls add_armor
+    #呼叫增加裝甲血量計算，並於下方定義功能
+
+def add_armor(h, a):  # defined second
+    new_health = h + a
+    print_health(new_health)  # calls print_health
+    #呼叫列印血量功能，並於下方定義
+
+def print_health(new_health):  # defined third
+    print(f"The player now has {new_health} health")
+
+# call entrypoint last
+#在最後呼叫開始點
+main()
+
+#將華氏(Fahrenheit)轉為攝氏(Celsius)
+def to_celsius(f):
+    return (5/9 * (f - 32))#輸出參數計算
+
+def test(f):
+    c = round(to_celsius(f), 2)
+    print(f, "degrees fahrenheit is", c, "degrees celsius")
+
+
+test(100)#100 degrees fahrenheit is 37.78 degrees celsius
+test(88)#88 degrees fahrenheit is 31.11 degrees celsius
+test(104)#104 degrees fahrenheit is 40.0 degrees celsius
+test(112)#112 degrees fahrenheit is 44.44 degrees celsius
+
+#小時轉換為秒
+def hours_to_seconds(hours):
+    return (hours * (60 * 60))
+
+def test(hours):
+    secs = hours_to_seconds(hours)
+    print(hours, "hours is", secs, "seconds")
+
+test(10)#10 hours is 36000 seconds
+test(1)#1 hours is 3600 seconds
+test(25)#25 hours is 90000 seconds
+
+#定義如果沒有下return的話會回傳None
+def say_hello():
+    print("Hello!")
+
+result = say_hello()
+print(result)
+#回傳Hello!跟None
+
+#複數數值回傳以逗號分開
+def cast_iceblast(wizard_level, start_mana):
+    damage = wizard_level * 2
+    new_mana = start_mana - 10
+    return damage, new_mana # return two values
+    
+dmg, mana = cast_iceblast(5, 100)#回傳參數的順序指定
+print(f"Damage: {dmg}, Remaining Mana: {mana}")
+# Damage: 10, Remaining Mana: 90
+
+#範例練習_轉職戰士
+def become_warrior(full_name, power):
+    title = f"{full_name} the warrior" #設定頭銜
+    new_power = power + 1 #設定新能力
+    return title, new_power
+
+def main(): #設定開始點
+    test("Frodo Baggins", 5)#測試數據
+    test("Bilbo Baggins", 10)
+    test("Gandalf The Grey", 9000)
+
+
+def test(input1, input2): #設定測試
+    result1, result2 = become_warrior(input1, input2)#數據順序與呼叫功能
+    print(result1, "has a power level of:", result2)
+
+#執行起始點
+main()
+# Frodo Baggins the warrior has a power level of: 6
+# Bilbo Baggins the warrior has a power level of: 11
+# Gandalf The Grey the warrior has a power level of: 9001
