@@ -168,13 +168,13 @@ result = say_hello()
 print(result)
 #回傳Hello!跟None
 
-#複數數值回傳以逗號分開
+#複數數值=引數(Argument)回傳以逗號分開
 def cast_iceblast(wizard_level, start_mana):
     damage = wizard_level * 2
     new_mana = start_mana - 10
     return damage, new_mana # return two values
     
-dmg, mana = cast_iceblast(5, 100)#回傳參數的順序指定
+dmg, mana = cast_iceblast(5, 100)#回傳參數的順序指定=引數(Argument)
 print(f"Damage: {dmg}, Remaining Mana: {mana}")
 # Damage: 10, Remaining Mana: 90
 
@@ -199,3 +199,143 @@ main()
 # Frodo Baggins the warrior has a power level of: 6
 # Bilbo Baggins the warrior has a power level of: 11
 # Gandalf The Grey the warrior has a power level of: 9001
+
+
+#20250129
+
+#引數(Argument) 是用於呼叫函式， 參數(Parameter) 是方法簽章(方法的宣告)。
+#參數可為任何自訂義的佔位符，引數則為實際帶入數值
+#參數 (Parameter)=建立功能（函式）時預設帶入的變數
+#函式可以沒有參數，比如上面提到作為起始點的main()
+# Default function parameters
+# allow named parameters to be initialized with default values if no value or undefined is passed.
+
+# Ref: MDN web docs - https://developer.mozilla.org/en-US/
+
+# 引數 (Argument)
+# Argument
+# is an Array-like object accessible inside functions that contains the values of the arguments passed to that function.
+
+# Ref: MDN web docs - https://developer.mozilla.org/en-US/
+
+# 呼叫函式時，傳給該函式的參數的值
+
+#使用=設定預設值
+def get_punched(health, armor=0):#護甲預設值為0
+    damage = 50 - armor
+    new_health = health - damage
+    return new_health
+
+
+def get_slashed(health, armor=0):
+    damage = 100 - armor
+    new_health = health - damage
+    return new_health
+
+
+
+def test(health, armor):
+    print(f"Running tests for health {health} and armor {armor}")
+    print("========================================")
+    print(f"Health: {health}, Armor: {armor}")
+    print(f"Health after punch: {get_punched(health, armor)}")
+    print("----------------------------------------")
+    print(f"Health: {health}, Armor: {armor}")
+    print(f"Health after slash: {get_slashed(health, armor)}")
+    print("----------------------------------------")
+    print(f"Health: {health}, Armor: no armor!")
+    print(f"Health after slash: {get_slashed(health)}")
+    print("----------------------------------------")
+    print(f"Health: {health}, Armor: no armor!")
+    print(f"Health after punch: {get_punched(health)}")
+    print("----------------------------------------\n")
+
+
+test(400, 5)
+
+# Running tests for health 400 and armor 5
+# ========================================
+# Health: 400, Armor: 5
+# Health after punch: 355
+# ----------------------------------------
+# Health: 400, Armor: 5
+# Health after slash: 305
+# ----------------------------------------
+# Health: 400, Armor: no armor!
+# Health after slash: 300
+# ----------------------------------------
+# Health: 400, Armor: no armor!
+# Health after punch: 350
+# ----------------------------------------
+
+#練習題1
+def curse(weapon_damage):
+    lesser_cursed = weapon_damage * 0.5
+    greater_cursed = weapon_damage * 0.25
+    return lesser_cursed, greater_cursed
+
+
+# Don't modify below this line
+
+
+def test(weapon_damage):
+    print("Weapon's base damage:", float(weapon_damage))
+    print("Cursing...")
+    lesser_cursed, greater_cursed = curse(weapon_damage)
+    print("With lesser curse the damage is:", float(lesser_cursed), "damage.")
+    print("With greater curse the damage is:", float(greater_cursed), "damage.")
+    print("=====================================")
+
+
+def main():
+    test(100)
+
+
+main()
+
+# Weapon's base damage: 100.0
+# Cursing...
+# With lesser curse the damage is: 50.0 damage.
+# With greater curse the damage is: 25.0 damage.
+# =====================================
+
+#練習題2
+def enchant_and_attack(target_health, damage, weapon):
+    enchanted_damage = damage + 10
+    new_health = target_health - enchanted_damage
+    enchanted_weapon = f"enchanted {weapon}"
+    return enchanted_weapon, new_health
+
+
+def test(target_health, damage, weapon):
+    print(f"The target has {target_health} health.")
+    print(f"{weapon} base damage: {damage} - Enchanting and attacking.")
+    enchanted_weapon, new_health = enchant_and_attack(target_health, damage, weapon)
+    print(f"The target has been attacked with the {enchanted_weapon}.")
+    print(f"The target has {new_health} health remaining.")
+    print("=====================================")
+
+
+def main():
+    test(100, 50, "sword")
+    test(500, 100, "axe")
+    test(1000, 250, "bow")
+
+
+main()
+
+# The target has 100 health.
+# sword base damage: 50 - Enchanting and attacking.
+# The target has been attacked with the enchanted sword.
+# The target has 40 health remaining.
+# =====================================
+# The target has 500 health.
+# axe base damage: 100 - Enchanting and attacking.
+# The target has been attacked with the enchanted axe.
+# The target has 390 health remaining.
+# =====================================
+# The target has 1000 health.
+# bow base damage: 250 - Enchanting and attacking.
+# The target has been attacked with the enchanted bow.
+# The target has 740 health remaining.
+# =====================================
