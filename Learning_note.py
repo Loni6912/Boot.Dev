@@ -24,15 +24,10 @@ print(f"Their account is currently active: {account_active}")
 print("=========================")
 print("Character Report Complete")
 print("Data types:")
-print(
-    f"level: {type(level).__name__}, name: {type(name).__name__}, character_class: {type(character_class).__name__}"
-) #列出變數的類別屬性type(變數).__name__
-print(
-    f"armor: {type(armor).__name__}, magic_resistance: {type(magic_resistance).__name__}"
-)
-print(
-    f"account_active: {type(account_active).__name__}"
-)
+print(f"level: {type(level).__name__}, name: {type(name).__name__}, character_class: {type(character_class).__name__}") 
+#列出變數的類別屬性type(變數).__name__
+print(f"armor: {type(armor).__name__}, magic_resistance: {type(magic_resistance).__name__}")
+print(f"account_active: {type(account_active).__name__}")
 
 #計算武器攻擊範圍
 def area_of_circle(radius): #def定義功能名稱(參數替代位parameter)
